@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Cobaan',
       theme: ThemeData(primarySwatch: Colors.deepPurple),
-      initialRoute: '/ilham',
+      initialRoute: '/splash',
       getPages: [
         GetPage(name: '/', page: () => LoginScreen()),
         GetPage(name: '/ilham', page: () => IlhamScreen()),
