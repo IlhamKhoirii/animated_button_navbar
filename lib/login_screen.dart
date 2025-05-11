@@ -26,8 +26,9 @@ class _LoginScreenState extends State<LoginScreen> {
     String password = passwordController.text.trim();
 
     if (username.isNotEmpty && password.isNotEmpty) {
-      // logika login bisa ditambahkan di sini
-      Get.offNamed('/ilham');
+      final box = GetStorage();
+      box.write('username', username);  // Menyimpan username ke GetStorage
+      Get.offNamed('/ilham');  // Pindah ke halaman Ilham
     } else {
       Get.snackbar(
         'Error',
@@ -40,14 +41,14 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Login Screen")),
+      appBar: AppBar(title: const Text("Login Screen")),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             TextField(
               controller: usernameController,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 labelText: "Username",
                 prefixIcon: Icon(Icons.person),
               ),
@@ -57,7 +58,7 @@ class _LoginScreenState extends State<LoginScreen> {
               obscureText: passwordTertutup,
               decoration: InputDecoration(
                 labelText: "Password",
-                prefixIcon: Icon(Icons.lock),
+                prefixIcon: const Icon(Icons.lock),
                 suffixIcon: IconButton(
                   icon: Icon(
                     passwordTertutup ? Icons.visibility_off : Icons.visibility,
@@ -66,13 +67,11 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ),
             ),
-            SizedBox(height: 20),
-            ElevatedButton(onPressed: () {
-              final box = GetStorage();
-              box.write('username', usernameController.text);
-              Get.to(()=> IlhamScreen());
-            }, 
-            child: Text("Login")),
+            const SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: login,
+              child: const Text("Login"),
+            ),
           ],
         ),
       ),

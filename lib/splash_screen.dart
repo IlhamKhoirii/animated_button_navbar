@@ -17,14 +17,12 @@ class _SplashScreenState extends State<SplashScreen> {
       final box = GetStorage();
       final statusUsername = box.read('username');
 
-      if (statusUsername != null) {
-        Get.offNamed('/login'); // Ganti dari Get.to(IlhamScreen())
+      // Jika ada username tersimpan, langsung ke IlhamScreen
+      if (statusUsername != null && statusUsername.isNotEmpty) {
+        Get.offNamed('/ilham');
       } else {
-        Get.offNamed('/ilham'); // Ganti dari Get.to(LoginScreen())
+        Get.offNamed('/login'); // Arahkan ke login jika belum ada data
       }
-
-
-      Get.offNamed('/'); // Ganti dari Get.to(LoginScreen())
     });
   }
 
