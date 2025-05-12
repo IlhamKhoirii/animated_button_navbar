@@ -1,3 +1,4 @@
+// main.dart
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
@@ -7,7 +8,7 @@ import 'splash_screen.dart';
 import 'profile_screen.dart';
 
 void main() async {
-  await GetStorage.init(); // Initialize GetStorage
+  await GetStorage.init();
   runApp(const MyApp());
 }
 
@@ -26,7 +27,7 @@ class MyApp extends StatelessWidget {
         GetPage(name: '/ilham', page: () => const IlhamScreen()),
         GetPage(name: '/splash', page: () => const SplashScreen()),
         GetPage(name: '/login', page: () => const LoginScreen()),
-        GetPage(name: '/profile', page: () => const ProfileScreen()), // Tambahkan rute profile
+        GetPage(name: '/profile', page: () => const ProfileScreen()),
       ],
     );
   }

@@ -1,3 +1,4 @@
+// splash_screen.dart
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
@@ -17,11 +18,10 @@ class _SplashScreenState extends State<SplashScreen> {
       final box = GetStorage();
       final statusUsername = box.read('username');
 
-      // Jika ada username tersimpan, langsung ke IlhamScreen
       if (statusUsername != null && statusUsername.isNotEmpty) {
-        Get.offNamed('/ilham');
+        Get.offNamed('/ilham'); // Jika sudah login, ke halaman utama
       } else {
-        Get.offNamed('/login'); // Arahkan ke login jika belum ada data
+        Get.offNamed('/login'); // Jika belum login, ke halaman login
       }
     });
   }
@@ -32,7 +32,10 @@ class _SplashScreenState extends State<SplashScreen> {
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [Text('Logo App'), CircularProgressIndicator()],
+          children: [
+            Text('Logo App'),
+            CircularProgressIndicator(),
+          ],
         ),
       ),
     );
